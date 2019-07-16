@@ -1,0 +1,91 @@
+<ion-header translucent>
+    <ion-toolbar color="primary">
+      <ion-title>Modal Content</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()">Close</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content fullscreen>
+    <div *ngIf="!name; else forminfo">
+        <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+          <div class="form-container">
+            <div class="row columns">
+             <ion-item>
+              <ion-label>Name
+                <input required type="text" formControlName="name">
+              </ion-label>
+            </ion-item> 
+            
+            <ion-item>
+                <label>Email
+                    <input type="email"formControlName="email">
+                  </label>
+
+            </ion-item>
+              
+              <ion-item>
+                  <label>Age
+                      <input type="number" formControlName="age">
+                    </label>
+              </ion-item>
+            
+              
+              <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <ng-template #forminfo>
+        <div class="form-container">
+          <div class="row columns">
+              <h1>{{ name }}</h1>
+      
+              <p>{{ email }}</p>
+
+              <p>{{age}}</p>
+          </div>
+        </div>
+      </ng-template>
+
+</ion-content>
+  
+  <!-- 
+  <ion-content fullscreen>
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="text" oninput="handleLastNameValue(event)"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label position="stacked">Age <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="number" oninput="handleLastNameValue(event)"></ion-input>
+            </ion-item>
+  
+        </ion-list>
+  
+        <div class="ion-padding">
+            <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+          </div>
+  </ion-content> -->
+
+<!-- <form [formGroup]="myForm" (onSubmit)="doSomething()">
+    <input formControlName="email" />
+    <input type="password" formControlName="password" />
+    <button type="submit">Registrarme</button>
+  </form>
+-->
+
+<!-- Inputs with labels -->
+
+
+
+  
