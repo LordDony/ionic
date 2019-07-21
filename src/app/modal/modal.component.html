@@ -1,6 +1,6 @@
 <ion-header translucent>
     <ion-toolbar color="primary">
-      <ion-title>Modal Content</ion-title>
+      <ion-title>Register</ion-title>
       <ion-buttons slot="end">
         <ion-button (click)="dismissModal()">Close</ion-button>
       </ion-buttons>
@@ -12,27 +12,24 @@
         <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
           <div class="form-container">
             <div class="row columns">
-             <ion-item>
-              <ion-label>Name
-                <input required type="text" formControlName="name">
-              </ion-label>
-            </ion-item> 
-            
+              <ion-item>
+                <ion-label position="stacked">Name <ion-text color="danger">*</ion-text></ion-label>
+                <ion-input required type="text" formControlName="name"></ion-input>
+              </ion-item>
+        
             <ion-item>
-                <label>Email
-                    <input type="email"formControlName="email">
-                  </label>
+              <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input required type="email" formControlName="email"></ion-input>
 
             </ion-item>
               
               <ion-item>
-                  <label>Age
-                      <input type="number" formControlName="age">
-                    </label>
+                <ion-label position="stacked">Age <ion-text color="danger">*</ion-text></ion-label>
+                <ion-input required type="number" formControlName="age"></ion-input>
               </ion-item>
-            
-              
-              <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+              <div class="ion-padding">
+                <ion-button expand="block" type="submit" class="ion-no-margin" value="Submit Form" [disabled]="!rForm.valid">Create account</ion-button>
+              </div>
             </div>
           </div>
         </form>
@@ -43,9 +40,9 @@
           <div class="row columns">
               <h1>{{ name }}</h1>
       
-              <p>{{ email }}</p>
+              <h1>{{ email }}</h1>
 
-              <p>{{age}}</p>
+              <h1>{{ age }}</h1>
           </div>
         </div>
       </ng-template>

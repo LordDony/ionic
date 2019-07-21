@@ -51,6 +51,13 @@ export class Tab1Page {
     const modal = await this.modal.create({
       component: ModalComponent
     });
+
+    modal.onDidDismiss().then((data)=>{
+      console.log(data)
+      console.log(data.data)
+      this.myArray.push(data.data);
+    
+    })
     return await modal.present();
   }
 

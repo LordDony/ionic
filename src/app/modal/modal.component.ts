@@ -23,14 +23,12 @@ export class ModalComponent implements OnInit {
       'email': [null, Validators.required],
       'age': [null, Validators.required],
       'validate': ''
-
     });
   }
   addPost(post){
-    this.name = post.name;
-    this.email = post.email;
-    this.age = post.age;
-    
+    console.log(this.rForm.value);
+    this.modalCtrl.dismiss(this.rForm.value);
+  
   }
 
   ngOnInit() {}
