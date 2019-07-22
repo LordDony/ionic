@@ -20,7 +20,30 @@
       {{item.age}}
       <small *ngIf="item.age >= 18">Mayor de edad</small>
     </ion-card>
+
+ 
   </div>
+
+  
+  <script>
+    const controller = document.querySelector('ion-action-sheet-controller');
+    const button = document.querySelector('ion-button');
+    button.addEventListener('click', handleButtonClick);
+    function handleButtonClick() {
+      controller.create({
+        header: 'Albums',
+        buttons: [
+          { text: 'Delete', role: 'destructive' },
+          { text: 'Share' },
+          { text: 'Play' },
+          { text: 'Favorite' },
+          { text: 'Cancel', role: 'cancel' }
+        ]
+      }).then(actionSheet => {
+        actionSheet.present();
+      });
+    }
+  </script>
 
   
 </ion-content>

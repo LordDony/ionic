@@ -11,11 +11,12 @@ import { AppComponent } from './app.component';
 import { ModalPipe } from './modal.pipe';
 import { ModalComponent } from './modal/modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, ModalPipe, ModalComponent],
   entryComponents: [ ModalComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,

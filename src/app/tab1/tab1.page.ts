@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from '../modal/modal.component';
+import { ApiService } from '../services/api.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class Tab1Page {
     }
   ];
 
-  constructor(private modal : ModalController) {
+  constructor(private modal : ModalController, private api : ApiService) {
     let data = {
       name : 'John',
       email : 'johnwick@gmail.com',
@@ -33,6 +34,10 @@ export class Tab1Page {
       //color : 'danger'
     };
     this.myArray.push(data);
+
+    this.api.getAll().subscribe(response =>{
+        console.log(response);
+    } )
   }
 
   calculateAgeColor(age:number){
@@ -55,9 +60,15 @@ export class Tab1Page {
     modal.onDidDismiss().then((data)=>{
       console.log(data)
       console.log(data.data)
+      this.api.create(data.data).subscribe(response => {
+        console.log(response);
+      })
       this.myArray.push(data.data);
     
-    })
+    });
+
+    
+
     return await modal.present();
   }
 
