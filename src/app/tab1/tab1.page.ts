@@ -52,6 +52,25 @@ export class Tab1Page {
 
   }
 
+  edit(){
+    let body ={
+      name : 'Juan',
+      email : 'juan@gmail.com',
+      age : 23
+    };
+
+    this.api.update(2,body).subscribe(response =>{
+      console.log(response);
+    })
+  }
+
+  delete(){
+    this.api.delete(2).subscribe(response => {
+      console.log(response);
+
+    })
+  }
+
   async presentModal() {
     const modal = await this.modal.create({
       component: ModalComponent

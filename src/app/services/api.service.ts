@@ -17,11 +17,11 @@ export class ApiService {
     return this.http.post(this.API+'/reports', body);
   }
 
-  delete(id : string) : Observable<any>{
+  delete(id : number) : Observable<any>{
     return this.http.delete(this.API+'/reports/'+id);
   }
 
-  update(id : string, body : any) : Observable<any> {
+  update(id : number, body : any) : Observable<any> {
     return this.http.put(this.API+'/reports/'+id,body);
   }
 }
