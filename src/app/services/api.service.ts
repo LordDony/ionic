@@ -6,22 +6,22 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  API : string = '127.0.0.1/api/reports';
+  API : string = 'http://127.0.0.1:3000/api/v1';
   constructor(private http : HttpClient) { }
 
   getAll() : Observable<any>{
-    return this.http.get(this.API+'/reports');
+    return this.http.get(this.API+'/users');
   }
 
   create(body:any) : Observable<any>{
-    return this.http.post(this.API+'/reports', body);
+    return this.http.post(this.API+'/users', body);
   }
 
   delete(id : number) : Observable<any>{
-    return this.http.delete(this.API+'/reports/'+id);
+    return this.http.delete(this.API+'/users/'+id);
   }
 
   update(id : number, body : any) : Observable<any> {
-    return this.http.put(this.API+'/reports/'+id,body);
+    return this.http.put(this.API+'/users/'+id,body);
   }
 }

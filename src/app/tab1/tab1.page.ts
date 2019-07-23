@@ -67,7 +67,6 @@ export class Tab1Page {
   delete(){
     this.api.delete(2).subscribe(response => {
       console.log(response);
-
     })
   }
 

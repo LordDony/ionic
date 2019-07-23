@@ -36,7 +36,6 @@ export class ModalComponent implements OnInit {
   dismissModal(){
     this.modalCtrl.dismiss({
       'dismissed': true
-
     });
   }
 
