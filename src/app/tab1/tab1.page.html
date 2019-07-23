@@ -14,7 +14,7 @@
           </ion-fab-button>
         </ion-fab>
 
-    <ion-card  class="ion-padding" *ngFor="let item of myArray" color="{{calculateAgeColor(item.age)}}">
+    <ion-card  (click)="presentActionSheet(item.name)"class="ion-padding" *ngFor="let item of myArray" color="{{calculateAgeColor(item.age)}}">
       {{item.name}} -
       {{item.email}} -
       {{item.age}}
@@ -23,27 +23,10 @@
 
  
   </div>
+ <!-- <ion-content fullscreen class="ion-padding">
+      <ion-button (click)="presentActionSheet()" expand="block">Show Action Sheet</ion-button>
+    </ion-content>-->
 
-  
-  <script>
-    const controller = document.querySelector('ion-action-sheet-controller');
-    const button = document.querySelector('ion-button');
-    button.addEventListener('click', handleButtonClick);
-    function handleButtonClick() {
-      controller.create({
-        header: 'Albums',
-        buttons: [
-          { text: 'Delete', role: 'destructive' },
-          { text: 'Share' },
-          { text: 'Play' },
-          { text: 'Favorite' },
-          { text: 'Cancel', role: 'cancel' }
-        ]
-      }).then(actionSheet => {
-        actionSheet.present();
-      });
-    }
-  </script>
 
   
 </ion-content>
