@@ -14,7 +14,7 @@
           </ion-fab-button>
         </ion-fab>
 
-    <ion-card  (click)="presentActionSheet(item.name)"class="ion-padding" *ngFor="let item of myArray" color="{{calculateAgeColor(item.age)}}">
+    <ion-card  (click)="presentActionSheet(item)"class="ion-padding" *ngFor="let item of myArray" color="{{calculateAgeColor(item.age)}}">
       {{item.name}} -
       {{item.email}} -
       {{item.age}}

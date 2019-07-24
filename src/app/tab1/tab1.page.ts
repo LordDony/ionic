@@ -94,7 +94,8 @@ export class Tab1Page {
 
     return await modal.present();
   }
-  async presentActionSheet(name) {
+
+  async presentActionSheet(item) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Options',
       buttons: [{
@@ -109,7 +110,8 @@ export class Tab1Page {
         text: 'Edit',
         handler: () => {
           console.log('Favorite clicked');
-          this.presentAlertPrompt();
+          this.presentAlertPrompt(item)
+          
         }
       }, {
         text: 'Cancel',
@@ -122,28 +124,6 @@ export class Tab1Page {
     await actionSheet.present();
   }
 //ion-alert
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-
-  async presentAlertMultipleButtons() {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['Cancel', 'Open Modal', 'Delete']
-    });
-
-    await alert.present();
-  }
-
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
@@ -168,24 +148,29 @@ export class Tab1Page {
     await alert.present();
   }
 
-  async presentAlertPrompt() {
+  async presentAlertPrompt(item) {
     const alert = await this.alertController.create({
       header: 'Edit',
       inputs: [
         {
-          name: 'name1',
+          name: 'name',
           type: 'text',
-          placeholder: 'Name'
+          placeholder: 'Name',
+          value: item.name
+
         },
         {
-          name: 'name2',
+          name: 'email',
           type: 'email',
-          placeholder: 'Email'
+          placeholder: 'Email',
+          value : item.email
         },
         {
-          name: 'name1',
+          name: 'age',
           type: 'number',
-          placeholder: 'Age'
+          placeholder: 'Age',
+          value : item.age
+
         },
       ],
       buttons: [
@@ -197,9 +182,10 @@ export class Tab1Page {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Ok',
+          text: 'Save',
           handler: () => {
             console.log('Confirm Ok');
+            
           }
         }
       ]
@@ -207,134 +193,4 @@ export class Tab1Page {
 
     await alert.present();
   }
-
-  async presentAlertRadio() {
-    const alert = await this.alertController.create({
-      header: 'Radio',
-      inputs: [
-        {
-          name: 'radio1',
-          type: 'radio',
-          label: 'Radio 1',
-          value: 'value1',
-          checked: true
-        },
-        {
-          name: 'radio2',
-          type: 'radio',
-          label: 'Radio 2',
-          value: 'value2'
-        },
-        {
-          name: 'radio3',
-          type: 'radio',
-          label: 'Radio 3',
-          value: 'value3'
-        },
-        {
-          name: 'radio4',
-          type: 'radio',
-          label: 'Radio 4',
-          value: 'value4'
-        },
-        {
-          name: 'radio5',
-          type: 'radio',
-          label: 'Radio 5',
-          value: 'value5'
-        },
-        {
-          name: 'radio6',
-          type: 'radio',
-          label: 'Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 Radio 6 ',
-          value: 'value6'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
-  async presentAlertCheckbox() {
-    const alert = await this.alertController.create({
-      header: 'Checkbox',
-      inputs: [
-        {
-          name: 'checkbox1',
-          type: 'checkbox',
-          label: 'Checkbox 1',
-          value: 'value1',
-          checked: true
-        },
-
-        {
-          name: 'checkbox2',
-          type: 'checkbox',
-          label: 'Checkbox 2',
-          value: 'value2'
-        },
-
-        {
-          name: 'checkbox3',
-          type: 'checkbox',
-          label: 'Checkbox 3',
-          value: 'value3'
-        },
-
-        {
-          name: 'checkbox4',
-          type: 'checkbox',
-          label: 'Checkbox 4',
-          value: 'value4'
-        },
-
-        {
-          name: 'checkbox5',
-          type: 'checkbox',
-          label: 'Checkbox 5',
-          value: 'value5'
-        },
-
-        {
-          name: 'checkbox6',
-          type: 'checkbox',
-          label: 'Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6 Checkbox 6',
-          value: 'value6'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
 }
